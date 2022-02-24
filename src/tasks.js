@@ -10,7 +10,7 @@ exports.createTask = (req, res) => {
     const db = connectDb();
     db.collection('tasks').add(newTask)
         .then(doc =>res.status(201).send(doc.id))
-        .catch(err => res.status(500).send(err))
+        .catch(err => res.status(500).send(err))/
 }
 
 exports.getTasks = (req, res) => {
