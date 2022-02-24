@@ -1,12 +1,12 @@
 //can use this file anytime we want to connect to firestore. Will always be the same code here
-const { initializeApp, cert, getApps } = require('firebase-admin/app');
-const { getFirestore } = require('firebase-admin/firestore');
-const serviceAccount = require('../credentials.json');
+import { initializeApp, cert, getApps } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
+import serviceAccount from '../credentials.json';
 
-exports.connectDb = () => {
+export const connectDb = () => {
     if(!getApps().length){
     initializeApp({
-        credential: cert(serviceAccount)
+        credential: cert(serviceAccount as any),
     })//takes a single object as a parameter. that object has credential (singular)
 }
     return getFirestore();

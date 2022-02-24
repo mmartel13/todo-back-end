@@ -1,19 +1,20 @@
 //ES5 version
-const { response } = require("express");
-const { connectDb } = require("./connectDb");
+import { Request, Response } from "express";
+import { connectDb } from "./connectDb";
 
-exports.createTask = (req, res) => {
+export const createTask = (req: Request, res: Response) => {
     const newTask = {
       task: req.body.task,
       done: false   
   }
     const db = connectDb();
-    db.collection('tasks').add(newTask)
+    db.collection('tasks')
+        .add(newTask)
         .then(doc =>res.status(201).send(doc.id))
-        .catch(err => res.status(500).send(err))/
+        .catch(err => res.status(500).send(err))
 }
 
-exports.getTasks = (req, res) => {
+export const getTasks = (req: Request, res: Response) => {
   const db = connectDb();
   db.collection("tasks")
     .get() //to get all tasks from the task collection
@@ -29,7 +30,7 @@ exports.getTasks = (req, res) => {
     .catch((err) => res.status(500).send(err));
 };
 
-exports.updateTask = (req, res) => {
+export const updateTask = (req: Request, res: Response) => {
     const { taskId } = req.params
     const isDone = req.body.done
     const db = connectDb();

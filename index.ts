@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const { getTasks, createTask, updateTask } = require('./src/tasks')//importing getTasks function 
+import express  from 'express';
+import cors from 'cors';
+import { getTasks, createTask, updateTask } from './src/tasks'//importing getTasks function 
 const PORT = process.env.PORT || 3000//checks to see if we have an environmental variable setup on our computer 
 
 const app = express();//creates an express app
