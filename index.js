@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getTasks, createTask } = require('./src/tasks')//importing getTasks function 
+const { getTasks, createTask, updateTask } = require('./src/tasks')//importing getTasks function 
 const PORT = process.env.PORT || 3000//checks to see if we have an environmental variable setup on our computer 
 
 const app = express();//creates an express app
@@ -10,7 +10,7 @@ app.use(express.json());//tells express to use a json parcer (to post or patch f
 //Routes (API)
 app.post('/tasks', createTask);
 app.get('/tasks', getTasks);
-// app.patch('/tasks/:taskId', updateTask)//: says don't display taskId but display whatever the actual id is 
+app.patch('/tasks/:taskId', updateTask)//: says don't display taskId but display whatever the actual id is 
 
 
 app.listen(PORT, () => {
